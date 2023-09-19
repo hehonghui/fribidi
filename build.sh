@@ -34,7 +34,9 @@ fi
 
 make
 
-make install
+if [[ $curDir == *$userName* ]]; then
+	make install
+fi
 
 
 export PATH=${BUILD_LIBS}/bin:${PATH}
