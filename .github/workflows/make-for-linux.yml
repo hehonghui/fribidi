@@ -17,18 +17,13 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: build fribidi libs
-      run: ./build.sh ./build_linux
+      run: ./build.sh ./build_linux && ls -lh ./build_linux
     - name: zip libs
       run: zip fribidi-libs-for-linux.zip ./build_linux
+    working-directory: ${{ github.workspace }}
 
     - name: 'Upload Artifact'
       uses: actions/upload-artifact@v2
       with:
         path: fribidi-libs-for-linux.zip
         name: fribidi-libs-for-linux
-
-    - name: 'Upload build logs'
-      uses: actions/upload-artifact@v2
-      if: failure()
-      with:
-        path: test/test-suite.log
