@@ -18,6 +18,7 @@ jobs:
     - uses: actions/checkout@v2
     - name: build fribidi libs
       run: ./build.sh build_linux
+    - name: zip libs
       run: zip fribidi-libs-for-linux.zip ./build_linux
 
     - name: 'Upload Artifact'
