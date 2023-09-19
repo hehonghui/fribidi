@@ -17,10 +17,10 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: build fribidi libs
-      run: mkdir ./build_linux && ./build.sh ./build_linux && ls -lh ./build_linux && echo "working-directory = ",${{ github.workspace }}
+      run: mkdir ./build_linux && ./build.sh ${{ github.workspace }}/build_linux && ls -lh ${{ github.workspace }}/build_linux && echo "working-directory = ",${{ github.workspace }}
       working-directory: ${{ github.workspace }}
     - name: zip libs
-      run: zip fribidi-libs-for-linux.zip ./build_linux
+      run: zip fribidi-libs-for-linux.zip ${{ github.workspace }}/build_linux
       working-directory: ${{ github.workspace }}
 
     - name: 'Upload Artifact'
@@ -28,6 +28,7 @@ jobs:
       with:
         path: fribidi-libs-for-linux.zip
         name: fribidi-libs-for-linux
+        working-directory: ${{ github.workspace }}
 
     - name: 'Upload build logs'
       uses: actions/upload-artifact@v2

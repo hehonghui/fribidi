@@ -14,7 +14,7 @@ BUILD_LIBS=""
 if [[ $curDir == *$userName* ]]; then
 	BUILD_LIBS=${HOME}/${output_dir}
 else
-	BUILD_LIBS="./${output_dir}"
+	BUILD_LIBS="${output_dir}"
 fi
 
 if [[ ! -d "${BUILD_LIBS}" ]]; then
