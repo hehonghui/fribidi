@@ -34,6 +34,8 @@ fi
 
 make
 
+make install
+
 if [[ $curDir == *$userName* ]]; then
 	make install
 fi
