@@ -17,7 +17,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: build fribidi libs
-      run: ./build.sh ./build_linux && ls -lh ./build_linux
+      run: mkdir ./build_linux && ./build.sh ./build_linux && ls -lh ./build_linux && echo "working-directory = ",${{ github.workspace }}
       working-directory: ${{ github.workspace }}
     - name: zip libs
       run: zip fribidi-libs-for-linux.zip ./build_linux
